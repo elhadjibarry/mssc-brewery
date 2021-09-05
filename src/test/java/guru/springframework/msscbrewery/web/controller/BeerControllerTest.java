@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import guru.springframework.msscbrewery.services.BeerService;
 import guru.springframework.msscbrewery.web.model.BeerDto;
 
+import guru.springframework.msscbrewery.web.model.BeerStyle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class BeerControllerTest {
     public void setUp() {
         beerDto = BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Beer 1")
-                .beerStyle("PALE_ALE")
+                .beerStyle(BeerStyle.IPA)
                 .upc(1234567890L)
                 .build();
     }
@@ -57,7 +58,7 @@ public class BeerControllerTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is(beerDto.getId().toString())))
                 .andExpect(jsonPath("$.beerName", is("Beer 1")))
-                .andExpect(jsonPath("$.beerStyle", is("PALE_ALE")))
+                .andExpect(jsonPath("$.beerStyle", is("IPA")))
                 .andExpect(jsonPath("$.upc", is(1234567890)));
     }
 

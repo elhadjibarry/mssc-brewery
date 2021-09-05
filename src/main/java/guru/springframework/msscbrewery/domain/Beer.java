@@ -1,13 +1,14 @@
-package guru.springframework.msscbrewery.web.model;
+package guru.springframework.msscbrewery.domain;
 
+import guru.springframework.msscbrewery.web.model.BeerStyle;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.sql.Timestamp;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 /**
@@ -17,19 +18,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerDto {
+public class Beer {
 
     private UUID id;
-
-    @NotBlank
     private String beerName;
-
-    @NotNull
     private BeerStyle beerStyle;
-
-    @Positive
     private Long upc;
-
-    private OffsetDateTime createdDate;
-    private OffsetDateTime updatedDate;
+    private Timestamp createdDate;
+    private Timestamp updatedDate;
 }
